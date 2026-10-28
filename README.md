@@ -316,7 +316,22 @@ tests/test_warehouse.py::TestWarehouseInvariants::test_etl_idempotency_rerun PAS
 
 ---
 
-## 11. University Lab Documentation
+## 11. Visual ETL & Execution Screenshots
+
+Full graphical step walkthroughs and high-resolution dialogs are available in [screenshots/README.md](screenshots/README.md).
+
+### Visual ETL Transformation Pipeline (Pentaho Spoon)
+![01 PDI Canvas Workflow](screenshots/01_pdi_canvas_workflow.png)
+
+### Successful Visual Execution (Green Checkmarks)
+![05 Execution Success](screenshots/05_execution_success.png)
+
+### Multidimensional OLAP Queries in MySQL
+![06 OLAP Query Output](screenshots/06_olap_query_output.png)
+
+---
+
+## 12. University Lab Documentation
 
 - [docs/EXPERIMENT.md](docs/EXPERIMENT.md): Full university lab record covering Aim, Tools, Theory, Schemas, Table Structures, Procedure, SQL, OLAP, and Conclusion.
 - [docs/VIVA_QUESTIONS.md](docs/VIVA_QUESTIONS.md): 25 comprehensive viva questions with detailed answers.
