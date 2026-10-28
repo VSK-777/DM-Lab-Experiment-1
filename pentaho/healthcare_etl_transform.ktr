@@ -3,7 +3,7 @@
   <info>
     <name>Healthcare_Patient_Visit_ETL</name>
     <description>Pentaho Data Integration visual ETL workflow for DM Lab Experiment 1</description>
-    <extended_description>Extracts patient visits from CSV, standardizes values, and loads into MySQL Fact_Patient_Visit</extended_description>
+    <extended_description>Extracts patient visits from CSV, standardizes values, resolves dimension keys, and loads into MySQL Fact_Patient_Visit</extended_description>
     <trans_version>1.0</trans_version>
     <trans_type>Normal</trans_type>
     <trans_status>0</trans_status>
@@ -49,20 +49,19 @@
     <created_user>-</created_user>
     <created_date>2026/10/28 20:00:00.000</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2026/10/29 00:20:00.000</modified_date>
+    <modified_date>2026/10/29 00:25:00.000</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
     <notepad>
-      <note>DM Lab Experiment 1 - Healthcare Data Warehouse ETL Pipeline
-Extract: patient_visits.csv
-Transform: Select &amp; Format Types, Add Date Surrogate Key
-Load: Target Table Fact_Patient_Visit</note>
+      <note>DM Lab Experiment 1: Healthcare - Patient Visit Analytics
+ETL Flow (Per Lab Manual Specification):
+CSV Input -> Select Values -> Lookup Dimension ID -> Insert into Fact Table</note>
       <xloc>80</xloc>
       <yloc>50</yloc>
-      <width>420</width>
-      <heigth>75</heigth>
+      <width>480</width>
+      <heigth>65</heigth>
       <fontname>Segoe UI</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>
@@ -156,25 +155,25 @@ Load: Target Table Fact_Patient_Visit</note>
   </connection>
   <order>
     <hop>
-      <from>CSV file input (patient_visits)</from>
-      <to>Select values (Cleanse &amp; Format)</to>
+      <from>CSV Input</from>
+      <to>Select Values</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values (Cleanse &amp; Format)</from>
-      <to>Add Date_ID Constant</to>
+      <from>Select Values</from>
+      <to>Lookup Dimension ID</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Add Date_ID Constant</from>
-      <to>Table output (Fact_Patient_Visit)</to>
+      <from>Lookup Dimension ID</from>
+      <to>Insert into Fact Table</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>CSV file input (patient_visits)</name>
+    <name>CSV Input</name>
     <type>CsvInput</type>
-    <description>Extracts raw clinical encounters from CSV</description>
+    <description>Extracts raw patient visits from CSV</description>
     <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
@@ -295,15 +294,15 @@ Load: Target Table Fact_Patient_Visit</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>120</xloc>
-      <yloc>200</yloc>
+      <xloc>140</xloc>
+      <yloc>180</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Select values (Cleanse &amp; Format)</name>
+    <name>Select Values</name>
     <type>SelectValues</type>
-    <description>Formats types and metadata</description>
+    <description>Cleanse nulls, format data types and metadata</description>
     <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
@@ -348,14 +347,14 @@ Load: Target Table Fact_Patient_Visit</note>
     </remotesteps>
     <GUI>
       <xloc>360</xloc>
-      <yloc>200</yloc>
+      <yloc>180</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Add Date_ID Constant</name>
+    <name>Lookup Dimension ID</name>
     <type>Constant</type>
-    <description>Surrogate Date Key</description>
+    <description>Resolves Dimension Surrogate Keys (Date_ID)</description>
     <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
@@ -387,14 +386,14 @@ Load: Target Table Fact_Patient_Visit</note>
     </remotesteps>
     <GUI>
       <xloc>600</xloc>
-      <yloc>200</yloc>
+      <yloc>180</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Table output (Fact_Patient_Visit)</name>
+    <name>Insert into Fact Table</name>
     <type>TableOutput</type>
-    <description>Inserts cleaned records into Fact_Patient_Visit</description>
+    <description>Loads transformed records into Fact_Patient_Visit</description>
     <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
@@ -463,7 +462,7 @@ Load: Target Table Fact_Patient_Visit</note>
     </remotesteps>
     <GUI>
       <xloc>840</xloc>
-      <yloc>200</yloc>
+      <yloc>180</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
