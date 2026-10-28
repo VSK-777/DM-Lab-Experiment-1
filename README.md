@@ -318,8 +318,19 @@ tests/test_warehouse.py::TestWarehouseInvariants::test_etl_idempotency_rerun PAS
 
 ## 11. Visual ETL & Execution Screenshots
 
-Placeholder directory for your real lab screenshots captured during the experiment:
-- Instructions and required screenshot checklist: [`screenshots/README.md`](screenshots/README.md)
+Real screenshots captured directly from the local execution in **Pentaho Data Integration (Spoon)**:
+
+### 1. Visual ETL Pipeline & Step Execution Metrics (Spoon)
+All 4 transformation steps (`CSV Input` ➜ `Select Values` ➜ `Lookup Dimension ID` ➜ `Insert into Fact Table`) executed with **green checkmarks** and 70 rows processed:
+![Pentaho ETL Workflow](screenshots/01_pentaho_etl_workflow.png)
+
+### 2. In-Memory Transformed Data Grid (Preview Data)
+Transformed clinical encounter records shown inside the Spoon execution preview panel:
+![Pentaho Preview Data](screenshots/02_pentaho_preview_data.png)
+
+### 3. Fact Table Target Loading & Completion Dialog
+Verification of all 70 loaded records with surrogate date keys (`Date_ID`), confirming `Spoon - The transformation has finished!!`:
+![Examine Preview Data](screenshots/03_pentaho_examine_fact_table.png)
 
 ---
 

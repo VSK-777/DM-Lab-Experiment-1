@@ -257,7 +257,16 @@ Execution of the pipeline against the synthetic healthcare dataset produced veri
 - **Pivot:** Successfully rotated doctors into rows and hospitals into columns.
 
 ### Visual ETL & Query Execution Screenshots
-Visual step captures and dialogs are archived in [`screenshots/`](../screenshots/) according to the checklist in [`screenshots/README.md`](../screenshots/README.md).
+Visual step captures and dialogs captured from local execution in **Pentaho Data Integration (Spoon)**:
+
+1. **ETL Workflow Canvas & Step Metrics:**
+   ![Pentaho ETL Workflow](../screenshots/01_pentaho_etl_workflow.png)
+
+2. **Transformed Clinical Encounters (Preview Data Grid):**
+   ![Pentaho Preview Data](../screenshots/02_pentaho_preview_data.png)
+
+3. **Fact Table Record Ingestion & Completion Log:**
+   ![Examine Preview Data](../screenshots/03_pentaho_examine_fact_table.png)
 
 ---
 

@@ -1,20 +1,29 @@
-# Lab Screenshots Directory
+# Lab Experiment Screenshots
 
-This directory is designated for your real screenshots captured from your local environment (Pentaho Data Integration / Spoon and MySQL).
-
----
-
-## Instructions for Adding Your Screenshots
-
-Save your actual screenshots directly into this directory using the standard file names:
-
-- `01_pdi_canvas_workflow.png` — Main Spoon canvas showing the connected ETL steps.
-- `02_csv_input_step.png` — Configuration dialog for CSV file input.
-- `03_mysql_db_connection.png` — MySQL database connection dialog showing valid connection.
-- `04_table_output_mapping.png` — Field mapping dialog to `Fact_Patient_Visit`.
-- `05_execution_success.png` — Execution results tab with green checkmarks.
-- `06_olap_query_output.png` — Execution results of the OLAP operations.
+This directory contains real, authentic screenshots captured from local environment runs of **Pentaho Data Integration (Spoon)** and the **MySQL Healthcare Data Warehouse** for DM Lab Experiment 1.
 
 ---
 
-*(No synthetic or generated images are stored in this repository)*
+## Captured Artifacts
+
+### 1. Pentaho PDI ETL Execution Flow & Step Metrics
+- **File:** `01_pentaho_etl_workflow.png`
+- **Description:** Spoon desktop GUI canvas displaying the 4 ETL pipeline steps (`CSV Input` ➜ `Select Values` ➜ `Lookup Dimension ID` ➜ `Insert into Fact Table`) with **green checkmarks**, along with the **Step Metrics** execution panel showing all 70 rows successfully read, transformed, and written with zero errors.
+
+![Pentaho PDI ETL Workflow](01_pentaho_etl_workflow.png)
+
+---
+
+### 2. Preview Data Grid in Spoon
+- **File:** `02_pentaho_preview_data.png`
+- **Description:** Spoon **Preview Data** tab displaying transformed patient visit records (`visit_id`, `patient_id`, `doctor_id`, `hospital_id`, `visit_date`, `diagnosis`, `treatment_cost`, `visit_duration_minutes`) in memory.
+
+![Pentaho Preview Data](02_pentaho_preview_data.png)
+
+---
+
+### 3. Examine Preview Data & Fact Table Loading
+- **File:** `03_pentaho_examine_fact_table.png`
+- **Description:** Full-screen dialog displaying all 70 rows loaded into the `Insert into Fact Table` step with surrogate date keys (`Date_ID`), along with background logs showing `Spoon - The transformation has finished!!`.
+
+![Examine Preview Data](03_pentaho_examine_fact_table.png)
