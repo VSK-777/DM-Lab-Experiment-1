@@ -12,12 +12,12 @@
 ---
 
 ## 2. Aim
-1. To build a robust, reproducible Data Warehouse / Data Mart for a healthcare enterprise using relational database management tools (MySQL / SQLite) and automated ETL processing pipelines (Python ETL / Pentaho Data Integration).
+1. To build a robust, reproducible Data Warehouse / Data Mart for a healthcare enterprise using relational database management tools (MySQL) and automated ETL processing pipelines (**Pentaho Data Integration - Kettle**).
 2. To design and implement multi-dimensional data models:
    - **Star Schema**
    - **Snowflake Schema**
    - **Fact Constellation (Galaxy) Schema**
-3. To write and execute robust ETL (Extract, Transform, Load) scripts that cleanse, standardize, and load source data into the warehouse in a foreign-key safe order.
+3. To write and execute robust ETL (Extract, Transform, Load) workflows that cleanse, standardize, and load source data into the warehouse in a foreign-key safe order.
 4. To execute and analyze the five core OLAP operations:
    - **Slice**
    - **Dice**
@@ -28,11 +28,11 @@
 ---
 
 ## 3. Software and Tools Required
-1. **Operating System:** Windows 10/11 or Linux / macOS.
-2. **Relational Database Engine:** MySQL Server 8.x / 9.x or SQLite 3.
-3. **ETL Execution Runtime:** Python 3.11+ with `mysql-connector-python`, `pandas`, and `pytest`.
-4. **Data Warehouse & BI Tools (Optional / Reference):** Pentaho Data Integration (PDI / Kettle 11.0), MySQL Workbench.
-5. **Version Control:** Git 2.40+ and GitHub CLI.
+1. **Operating System:** Windows 10/11
+2. **Relational Database Engine:** MySQL Server 8.x / 9.x
+3. **ETL Execution Runtime:** Pentaho Data Integration (PDI / Kettle) 9.3
+4. **Database Tools:** MySQL Workbench / MySQL CLI
+5. **Version Control:** Git & GitHub
 
 ---
 
@@ -149,20 +149,21 @@ The ETL pipeline ingests raw operational CSV data into the warehouse through thr
 ---
 
 ## 11. Procedure
-1. Create the target warehouse database and execute the Star, Snowflake, and Constellation DDL scripts.
-2. Place source CSV datasets in the `data/` directory.
-3. Run the automated ETL pipeline:
-   ```bash
-   python etl/run_etl.py
+1. Create the target warehouse database and execute the Star, Snowflake, and Constellation DDL scripts in MySQL:
+   ```sql
+   SOURCE sql/01_create_database.sql;
+   SOURCE sql/02_star_schema.sql;
+   SOURCE sql/03_snowflake_schema.sql;
+   SOURCE sql/04_fact_constellation_schema.sql;
+   SOURCE sql/05_load_sample_data.sql;
    ```
-4. Verify table row counts and referential integrity.
-5. Execute the OLAP queries (Slice, Dice, Roll-up, Drill-down, Pivot):
-   ```bash
-   python etl/run_olap.py
-   ```
-6. Run the automated test suite to validate analytical invariants:
-   ```bash
-   pytest tests/ -v
+2. Place source CSV datasets in the `data/` directory (`patient_visits.csv`, etc.).
+3. Launch **Pentaho Data Integration (Spoon)** (`Spoon.bat`) and open `pentaho/healthcare_etl_transform.ktr`.
+4. Execute the transformation (`F9`) and verify that all 4 steps (`CSV Input` ➜ `Select Values` ➜ `Lookup Dimension ID` ➜ `Insert into Fact Table`) finish with green checkmarks.
+5. In Spoon, inspect the **Step Metrics** and **Preview Data** tabs to verify row counts.
+6. Execute the OLAP queries (Slice, Dice, Roll-up, Drill-down, Pivot) in MySQL:
+   ```sql
+   SOURCE sql/06_olap_operations.sql;
    ```
 
 ---
