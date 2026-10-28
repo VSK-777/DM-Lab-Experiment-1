@@ -1,5 +1,6 @@
 # DM Lab Experiment 1: Healthcare Data Warehouse
 
+[![GitHub Repo](https://img.shields.io/badge/GitHub-VSK--777%2FDM--Lab--Experiment--1-181717.svg?logo=github)](https://github.com/VSK-777/DM-Lab-Experiment-1)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
 [![Database: MySQL 9.5](https://img.shields.io/badge/Database-MySQL%209.5%20%7C%20SQLite%203-orange.svg)](https://www.mysql.com/)
 [![Tests: 16 Passed](https://img.shields.io/badge/Tests-16%20Passed%20(100%25)-brightgreen.svg)](tests/)

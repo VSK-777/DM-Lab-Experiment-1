@@ -3,7 +3,7 @@
 **Project:** DM Lab Experiment 1 — Healthcare Data Warehouse  
 **Course:** Data Mining Lab (III CSE - I Sem / CSE R23)  
 **Workspace:** `C:\Users\Lenovo\Desktop\VSK\B.Tech\3-1\Labs\DM Lab\DM LAB-24 BATCH\DM-Lab-Experiment-1`  
-**Repository:** Local Git initialized (`main` branch)
+**Repository:** [https://github.com/VSK-777/DM-Lab-Experiment-1](https://github.com/VSK-777/DM-Lab-Experiment-1) (`main` branch)
 
 ---
 
