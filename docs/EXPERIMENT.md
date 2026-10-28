@@ -257,13 +257,7 @@ Execution of the pipeline against the synthetic healthcare dataset produced veri
 - **Pivot:** Successfully rotated doctors into rows and hospitals into columns.
 
 ### Visual ETL & Query Execution Screenshots
-Visual step captures and dialogs are archived in [`screenshots/`](../screenshots/):
-1. **PDI Visual Canvas:** [`screenshots/01_pdi_canvas_workflow.png`](../screenshots/01_pdi_canvas_workflow.png)
-2. **CSV Input Step:** [`screenshots/02_csv_input_step.png`](../screenshots/02_csv_input_step.png)
-3. **MySQL DB Connection:** [`screenshots/03_mysql_db_connection.png`](../screenshots/03_mysql_db_connection.png)
-4. **Table Output Mapping:** [`screenshots/04_table_output_mapping.png`](../screenshots/04_table_output_mapping.png)
-5. **PDI Execution Success:** [`screenshots/05_execution_success.png`](../screenshots/05_execution_success.png)
-6. **OLAP Outputs:** [`screenshots/06_olap_query_output.png`](../screenshots/06_olap_query_output.png)
+Visual step captures and dialogs are archived in [`screenshots/`](../screenshots/) according to the checklist in [`screenshots/README.md`](../screenshots/README.md).
 
 ---
 

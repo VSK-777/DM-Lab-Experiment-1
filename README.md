@@ -318,16 +318,8 @@ tests/test_warehouse.py::TestWarehouseInvariants::test_etl_idempotency_rerun PAS
 
 ## 11. Visual ETL & Execution Screenshots
 
-Full graphical step walkthroughs and high-resolution dialogs are available in [screenshots/README.md](screenshots/README.md).
-
-### Visual ETL Transformation Pipeline (Pentaho Spoon)
-![01 PDI Canvas Workflow](screenshots/01_pdi_canvas_workflow.png)
-
-### Successful Visual Execution (Green Checkmarks)
-![05 Execution Success](screenshots/05_execution_success.png)
-
-### Multidimensional OLAP Queries in MySQL
-![06 OLAP Query Output](screenshots/06_olap_query_output.png)
+Placeholder directory for your real lab screenshots captured during the experiment:
+- Instructions and required screenshot checklist: [`screenshots/README.md`](screenshots/README.md)
 
 ---
 
