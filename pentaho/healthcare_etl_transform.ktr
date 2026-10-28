@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformation>
+  <info>
+    <name>Healthcare_Patient_Visit_ETL</name>
+    <description>Pentaho Data Integration pipeline for DM Lab Experiment 1</description>
+    <extended_description>Extracts patient visits from CSV, cleanses data, resolves dimensions, and loads into Fact_Patient_Visit</extended_description>
+    <trans_version>1.0</trans_version>
+    <trans_type>Normal</trans_type>
+    <directory>/</directory>
+    <parameters>
+    </parameters>
+  </info>
+  <connection>
+    <name>Healthcare_MySQL_DW</name>
+    <server>localhost</server>
+    <type>MYSQL</type>
+    <access>Native</access>
+    <database>healthcare_dw</database>
+    <port>3306</port>
+    <username>root</username>
+    <password>Encrypted </password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>Y</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <order>
+    <hop> <from>CSV Input (patient_visits.csv)</from> <to>Select Values (Format Conversions)</to> <enabled>Y</enabled> </hop>
+    <hop> <from>Select Values (Format Conversions)</from> <to>Dimension Lookup (Date &amp; Facility)</to> <enabled>Y</enabled> </hop>
+    <hop> <from>Dimension Lookup (Date &amp; Facility)</from> <to>Table Output (Fact_Patient_Visit)</to> <enabled>Y</enabled> </hop>
+  </order>
+  <step>
+    <name>CSV Input (patient_visits.csv)</name>
+    <type>CsvInput</type>
+    <description>Ingests raw clinical patient visits</description>
+    <distribute>Y</distribute>
+    <filename>${Internal.Entry.Current.Directory}/../data/patient_visits.csv</filename>
+    <filename_field/>
+    <rownum_field/>
+    <include_filename>N</include_filename>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <header>Y</header>
+    <buffer_size>50000</buffer_size>
+    <lazy_conversion>Y</lazy_conversion>
+    <add_filename_result>N</add_filename_result>
+    <parallel>N</parallel>
+    <newline_possible>N</newline_possible>
+    <encoding>UTF-8</encoding>
+  </step>
+  <step>
+    <name>Select Values (Format Conversions)</name>
+    <type>SelectValues</type>
+    <description>Casts numeric fields and validates date formats</description>
+    <distribute>Y</distribute>
+  </step>
+  <step>
+    <name>Dimension Lookup (Date &amp; Facility)</name>
+    <type>DBLookup</type>
+    <description>Resolves foreign keys against warehouse dimension tables</description>
+    <distribute>Y</distribute>
+    <connection>Healthcare_MySQL_DW</connection>
+  </step>
+  <step>
+    <name>Table Output (Fact_Patient_Visit)</name>
+    <type>TableOutput</type>
+    <description>Inserts cleaned rows into central fact table</description>
+    <distribute>Y</distribute>
+    <connection>Healthcare_MySQL_DW</connection>
+    <schema/>
+    <table>Fact_Patient_Visit</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+  </step>
+</transformation>
