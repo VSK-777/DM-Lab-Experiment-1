@@ -99,7 +99,6 @@ flowchart LR
 ```
 DM-Lab-Experiment-1/
 ├── README.md                           # Master project guide
-├── PROGRESS.md                         # Milestone tracking and commit log
 ├── .gitignore                          # Protects credentials, venvs, and temp files
 ├── requirements.txt                    # Python package dependencies
 ├── .env.example                        # Template for database configuration
@@ -280,6 +279,45 @@ LEFT JOIN Fact_Patient_Visit f ON d.Doctor_ID = f.Doctor_ID
 LEFT JOIN Dim_Hospital h ON f.Hospital_ID = h.Hospital_ID
 GROUP BY d.Doctor_ID, d.Name, d.Specialization;
 ```
+
+### 9.6 Lab Manual Specification Query & Real Output (Exp-1.pdf Page 7-8)
+As provided in university lab manual `Exp-1.pdf`:
+```sql
+SELECT d.Specialization, h.Hospital_Name, COUNT(*) AS Visit_Count 
+FROM Fact_Patient_Visit f
+JOIN Dim_Doctor d ON f.Doctor_ID = d.Doctor_ID 
+JOIN Dim_Hospital h ON f.Hospital_ID = h.Hospital_ID 
+JOIN Dim_Date dt ON f.Date_ID = dt.Date_ID 
+WHERE dt.Year = 2024
+GROUP BY d.Specialization, h.Hospital_Name
+ORDER BY d.Specialization, Visit_Count DESC;
+```
+
+**Execution Output on Local MySQL `healthcare_dw`:**
+| Specialization | Hospital_Name | Visit_Count |
+| :--- | :--- | :---: |
+| **Cardiology** | Fortis Hospital | **15** |
+| **Cardiology** | Apollo Hospitals | **10** |
+| **Dermatology** | AIIMS | **6** |
+| **General Medicine** | Manipal Hospital | **5** |
+| **Neurology** | Manipal Hospital | **5** |
+| **Neurology** | Max Healthcare | **5** |
+| **Oncology** | Max Healthcare | **6** |
+| **Orthopedics** | AIIMS | **6** |
+| **Pediatrics** | Apollo Hospitals | **6** |
+
+---
+
+### Experiment Summary (Per Exp-1.pdf Page 8)
+| Step / Item | Manual Requirement | Repository Implementation |
+| :--- | :--- | :--- |
+| **ETL Tool** | Pentaho PDI (Kettle) | `pentaho/healthcare_etl_transform.ktr` (Spoon 9.3) |
+| **Schema** | Star Schema | `sql/02_star_schema.sql` (also Snowflake & Constellation) |
+| **Fact Table** | Patient Visit | `Fact_Patient_Visit` (70 clinical encounter records) |
+| **Dimensions** | Patient, Doctor, Hospital, Date | `Dim_Patient`, `Dim_Doctor`, `Dim_Hospital`, `Dim_Date` |
+| **ETL Steps** | CSV Input ➜ Select Values ➜ Lookup ID ➜ Insert | Verified in Spoon with green checkmarks |
+| **OLAP Operations** | Slice, Dice, Roll-up, Drill-down, Pivot | Verified in `sql/06_olap_operations.sql` |
+| **Result** | Healthcare service delivery analytics | Complete insights into trends, costs, and doctor specializations |
 
 *Actual execution outputs and tables are recorded in [reports/sample_outputs.md](reports/sample_outputs.md).*
 
