@@ -1,0 +1,6 @@
+hospital_id,hospital_name,location,type,state,country,region
+H001,Apollo Hospitals,Mumbai,Multi-Specialty,Maharashtra,India,West
+H002,Fortis Hospital,Mumbai,Super-Specialty,Maharashtra,India,West
+H003,Manipal Hospital,Bangalore,Multi-Specialty,Karnataka,India,South
+H004,Max Healthcare,Delhi,Super-Specialty,Delhi,India,North
+H005,AIIMS,Delhi,Government Specialty,Delhi,India,North

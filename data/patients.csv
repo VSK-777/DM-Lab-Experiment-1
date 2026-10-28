@@ -1,0 +1,26 @@
+patient_id,name,gender,age,city
+P001,Rahul Patel,M,65,Mumbai
+P002,Myra Rao,Female,26,Mumbai
+P003,Karan Patel,M,55,Mumbai
+P004,Pooja Sharma,F,23,Mumbai
+P005,Aditya Rao,M,53,Mumbai
+P006,Saanvi Reddy, F,32,Mumbai
+P007,Muhammad Mehta,m,69,Mumbai
+P008,Ananya Verma, F,39,Bangalore
+P009,Vivaan Rao,m,24,Mumbai
+P010,Pooja Patel,f,72,Hyderabad
+P011,Vikram Nair,M,64,Pune
+P012,Rhea Patel, F,23,Bangalore
+P013,Rahul Mehta,m,54,Delhi
+P014,Shreya Patel,F,60,Delhi
+P015,Kabir Patel,Male,73,Mumbai
+P016,Pooja Nair, F,58,Hyderabad
+P017,Vivaan Joshi,m,31,Bangalore
+P018,Shreya Gupta,F,56,Mumbai
+P019,Sai Reddy,Male,28,Pune
+P020,Pooja Nair,Female,61,Hyderabad
+P021,Aarav Rao,M,69,Hyderabad
+P022,Pooja Nair,F,31,Hyderabad
+P023,Aditya Gupta,M ,43,Pune
+P024,Isha Nair,Female,33,Bangalore
+P025,Karan Mehta,M ,75,Chennai

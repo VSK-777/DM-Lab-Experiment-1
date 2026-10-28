@@ -1,0 +1,9 @@
+medication_id,medication_name,category,unit_cost
+MED001,Atorvastatin 20mg,Cardiovascular,15.5
+MED002,Aspirin 75mg,Antiplatelet,4.25
+MED003,Metformin 500mg,Antidiabetic,6.8
+MED004,Levetiracetam 500mg,Neurological,32.0
+MED005,Amoxicillin 500mg,Antibiotic,18.0
+MED006,Ibuprofen 400mg,Analgesic,8.5
+MED007,Paracetamol 650mg,Antipyretic,3.5
+MED008,Telmisartan 40mg,Antihypertensive,22.0
